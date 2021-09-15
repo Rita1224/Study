@@ -1,0 +1,15 @@
+<mat-list role="list"  class="question-list">
+    <mat-list-item class="question-list-item" role="listitem" *ngFor="let word of questionList; let i = index">
+        {{i+1}}: {{word}}
+    </mat-list-item>
+</mat-list>
+<div class="display-container" >
+    <button mat-raised-button color="primary" id="switch" (click)="onSwitchQuestionResult()">switch</button>
+    <button mat-raised-button color="primary" class="display-button" id="display"(click)="onDisplayResult()">display/Hide</button>
+
+</div>
+<mat-list role="list"  class="question-list" *ngIf="isResultVisible()">
+    <mat-list-item class="question-list-item" role="listitem" *ngFor="let word of answerList; let i = index">
+        {{i+1}}: {{word}}
+    </mat-list-item>
+</mat-list>
