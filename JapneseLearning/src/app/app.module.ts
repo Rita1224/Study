@@ -15,6 +15,10 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from "@angular/forms";
 import { ErrorListComponent } from './word-list/error-list/error-list.component';
 import { SentencesListComponent } from './word-list/sentences-list/sentences-list.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,10 @@ import { SentencesListComponent } from './word-list/sentences-list/sentences-lis
     FormsModule,
     HttpClientModule,
     HttpClientJsonpModule,
+    MatTableModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Japnese} from "../models/japnese";
+import {JapaneseSentences} from "../models/japaneseSentences";
 import {WORDS} from "../mock-japnese";
+import {SENTENCES} from "../mock-japnese-sentences";
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { ConfigService } from './config.service';
@@ -19,6 +21,11 @@ export class JapneseService {
   getJapnese(): Observable<Japnese[]> {
     const words = of(WORDS);
     return words;
+  }
+
+  getSentence(): Observable<JapaneseSentences[]> {
+    const sentences = of(SENTENCES);
+    return sentences;
   }
 
   getHeroes(): Observable<string> {

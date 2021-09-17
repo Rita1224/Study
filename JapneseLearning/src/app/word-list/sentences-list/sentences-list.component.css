@@ -1,0 +1,15 @@
+table {
+  width: 100%;
+}
+.material-icons.green {
+  color: green;
+}
+
+.material-icons.gray {
+  color: gray;
+}
+
+::ng-deep .bigsize {
+  font-size: 25px;
+  line-height: 25px;
+}

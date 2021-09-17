@@ -1,1 +1,60 @@
-<p>sentences-list works!</p>
+<table mat-table [dataSource]="dataSource">
+    <!--- Note that these columns can be defined in any order.
+    The actual rendered columns are set as a property on the row definition" -->
+    <!-- Position Column -->
+    <ng-container matColumnDef="chinese">
+        <th mat-header-cell *matHeaderCellDef> Chinese </th>
+        <td mat-cell *matCellDef="let element"> {{element.chinese}} </td>
+    </ng-container>
+     <!-- Weight Column -->
+     <ng-container matColumnDef="romaji">
+        <th mat-header-cell *matHeaderCellDef> Romaji </th>
+        <td mat-cell *matCellDef="let element"> 
+            <input class="bigsize" type="text" [(ngModel)]="element.romajiResult">
+            <mat-icon 
+                *ngIf="element.romajiResult == element.romaji" 
+                class="material-icons green bigsize" 
+                aria-hidden="false" 
+                aria-label="Example done icon">done</mat-icon>
+            <button mat-icon-button class="material-icons gray" 
+                aria-label="Display result" 
+                #tooltip="matTooltip"
+                matTooltip="{{element.romaji}}"
+                matTooltipPosition="right"
+                matTooltipClass="bigsize"
+                matTooltipHideDelay="2000">
+                <mat-icon>help</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="hiragana">
+        <th mat-header-cell *matHeaderCellDef> Hiragana </th>
+        <td mat-cell *matCellDef="let element"> 
+            <input class="bigsize" type="text" [(ngModel)]="element.hiraganaresult">
+            <mat-icon 
+                *ngIf="element.hiraganaresult == element.hiragana" 
+                class="material-icons green" 
+                aria-hidden="false" 
+                aria-label="Example done icon">done</mat-icon>
+            <button mat-icon-button class="material-icons gray" 
+                aria-label="Display result" 
+                #tooltip="matTooltip"
+                matTooltip="{{element.hiragana}}"
+                matTooltipPosition="right"
+                matTooltipClass="bigsize"
+                matTooltipHideDelay="2000">
+                <mat-icon>help</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+   
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="errorTimes">
+        <th mat-header-cell *matHeaderCellDef> ErrorTimes </th>
+        <td mat-cell *matCellDef="let element"> {{element.errorTimes}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
