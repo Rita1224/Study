@@ -1,3 +1,4 @@
+import { JsonpClientBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -29,6 +30,27 @@ export class WordFormatComponent implements OnInit {
     res.chinese = tsts[0];
     res.group1="か行";
     return JSON.stringify(res);
+  }
+
+  formatJapaneseSentences(str:string){
+    var res = {
+      romaji: "",
+      hiragana: "",
+      chinese: ""
+    }
+    let t = str.split(";");
+    res.romaji = t[0];
+    res.hiragana = t[1];
+    res.chinese = t[2];
+    return JSON.stringify(res);
+  }
+
+  onJapaneseSentencesFormat(){
+    this.result = "";
+    var words = this.test.split(",\n");
+    words.forEach(val => {
+      this.result += "," + this.formatJapaneseSentences(val);
+    });
   }
 
   onformat(){

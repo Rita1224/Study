@@ -2,20 +2,19 @@ import { Injectable } from '@angular/core';
 import {Japnese} from "../models/japnese";
 import {WORDS} from "../mock-japnese";
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JapneseService {
-  private heroesUrl = 'http://127.0.0.1:3000/';  // URL to web api
 
-  constructor( private http: HttpClient,) { }
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  constructor(
+    private http: HttpClient,
+    private configService: ConfigService
+  ) { 
+  }
 
   getJapnese(): Observable<Japnese[]> {
     const words = of(WORDS);
@@ -23,6 +22,6 @@ export class JapneseService {
   }
 
   getHeroes(): Observable<string> {
-    return this.http.get<string>(this.heroesUrl);
+    return this.http.get<string>("http://localhost:3000/test");
   }
 }

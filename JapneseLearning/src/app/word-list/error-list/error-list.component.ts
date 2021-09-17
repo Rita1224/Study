@@ -43,6 +43,20 @@ export class ErrorListComponent implements OnInit {
     }
   }
 
+  onReset(){
+    this.errorList = this.errorList.sort(this.autoSort);
+    this.questionList = this.errorList.map(function(val){
+      return val.romaji;
+    });
+    this.answerList = this.errorList.map(function(val){
+      return val.hiragana + "(" + val.chinese + ")";
+    });
+  }
+
+  autoSort(a,b){
+    return Math.random() >= 0.5 ? 1 : -1;
+  }
+
   isResultVisible():boolean{
     return this.showResult;
   }

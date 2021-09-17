@@ -22,8 +22,8 @@ export class WordListLayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.japaneseWordList();
-    this.japneseService.getHeroes().subscribe(str => {
-      console.log(str);
+    this.japneseService.getHeroes().subscribe(res => {
+      console.log(res);
     })
   }
 

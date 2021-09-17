@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import {HttpClientJsonpModule} from  '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { WordListLayoutComponent } from './word-list/word-list-layout/word-list-layout.component';
@@ -13,13 +14,15 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from "@angular/forms";
 import { ErrorListComponent } from './word-list/error-list/error-list.component';
+import { SentencesListComponent } from './word-list/sentences-list/sentences-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WordListLayoutComponent,
     WordFormatComponent,
-    ErrorListComponent
+    ErrorListComponent,
+    SentencesListComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { ErrorListComponent } from './word-list/error-list/error-list.component'
     MatInputModule,
     FormsModule,
     HttpClientModule,
+    HttpClientJsonpModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
