@@ -1,5 +1,6 @@
 import { JsonpClientBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import {JapneseService} from "../../service/japnese.service";
 
 @Component({
   selector: 'app-word-format',
@@ -9,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class WordFormatComponent implements OnInit {
   test="";
   result: string = "";
-  constructor() { }
+  constructor(private japneseService: JapneseService) { }
 
   ngOnInit(): void {
+    
+  }
+  onInsert(){
+    this.japneseService.insertSentence().subscribe(res => {
+      console.log(res);
+    })
   }
 
   formatString(str:string){
@@ -28,7 +35,7 @@ export class WordFormatComponent implements OnInit {
     res.hiragana = tst[0];
     let tsts = tst[1].split("）");
     res.chinese = tsts[0];
-    res.group1="か行";
+    res.group1="な行";
     return JSON.stringify(res);
   }
 

@@ -21,7 +21,17 @@
 
 .display-button {
   position: absolute;
-  top: 49%;
+  top: 100%;
+  left: 10%;
+}
+.reset-button {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+.switch-button {
+  position: absolute;
+  top: 55%;
   left: 10%;
 }
 

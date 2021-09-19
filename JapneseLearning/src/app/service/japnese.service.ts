@@ -29,6 +29,16 @@ export class JapneseService {
   }
 
   getHeroes(): Observable<string> {
-    return this.http.get<string>("http://localhost:3000/test");
+    return this.http.get<string>("http://localhost:3000/test", {});
+  }
+
+  insertWords(): Observable<any> {
+    return this.http.post<any>("http://localhost:3000/test/insertWords",
+    WORDS);
+  }
+
+  insertSentences(): Observable<any> {
+    return this.http.post<any>("http://localhost:3000/test/insertSentences",
+    SENTENCES);
   }
 }

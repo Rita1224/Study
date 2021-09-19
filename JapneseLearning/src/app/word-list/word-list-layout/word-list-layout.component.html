@@ -20,7 +20,8 @@
             </mat-list-item>
         </mat-list> -->
         <div class="display-container" >
-            <button mat-raised-button *ngIf="isDisplayButtonVisible()" color="primary" id="display" (click)="onReset()">reset</button>
+            <button mat-raised-button *ngIf="isDisplayButtonVisible()" color="primary" class="switch-button" id="switch" (click)="onSwitchQuestionResult()">switch</button>
+            <button mat-raised-button *ngIf="isDisplayButtonVisible()" color="primary" class="reset-button" id="reset" (click)="onReset()">reset</button>
             <button mat-raised-button *ngIf="isDisplayButtonVisible()" color="primary" class="display-button" id="display" (click)="onDisplayResult()">display</button>
         </div>
         <mat-list role="list" class="answer-list" *ngIf="isResultVisible()">

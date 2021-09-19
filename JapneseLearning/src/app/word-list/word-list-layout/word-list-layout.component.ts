@@ -22,9 +22,7 @@ export class WordListLayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.japaneseWordList();
-    this.japneseService.getHeroes().subscribe(res => {
-      console.log(res);
-    })
+   
   }
 
   japaneseWordList():void{
@@ -95,5 +93,11 @@ export class WordListLayoutComponent implements OnInit {
       return prevValue;
     }, []);
     return result;
+  }
+
+  onSwitchQuestionResult(){
+    var temp = this.questionList;
+    this.questionList = this.answerList;
+    this.answerList = temp;
   }
 }
