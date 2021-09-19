@@ -2,6 +2,7 @@ import { Component, OnInit, Input} from '@angular/core';
 import { Japnese } from 'src/app/models/japnese';
 import {GroupedJapnese} from "src/app/models/groupedJapnese";
 import {JapneseService} from "../../service/japnese.service";
+import {GroupByTypes} from "src/app/models/groupBy";
 
 @Component({
   selector: 'app-word-list-layout',
@@ -18,6 +19,8 @@ export class WordListLayoutComponent implements OnInit {
   showDisplayButton: boolean = false;
   japaneseWord: Array<GroupedJapnese> = [];
 
+  @Input() groupBy: GroupByTypes = GroupByTypes.HANG;
+
   constructor(private japneseService: JapneseService) { }
 
   ngOnInit(): void {
@@ -26,9 +29,15 @@ export class WordListLayoutComponent implements OnInit {
   }
 
   japaneseWordList():void{
-    this.japneseService.getJapnese()
+    this.japneseService.queryWords()
       .subscribe(words => {
-        this.japaneseWord = this.getGroup(words)
+        var result = words.result;
+        result.map(function(val){
+          if(val.learningDate){
+            val.learningDate = val.learningDate.substring(0, 10);
+          }
+        });
+        this.japaneseWord = this.getGroup(result);
       });
   }
 
@@ -74,10 +83,14 @@ export class WordListLayoutComponent implements OnInit {
   }
 
   getGroup(groupData) {
+    groupData = groupData.filter(item => {
+      return item[this.groupBy] ? true: false;
+  });
+
     let result = groupData.reduce((prevValue, currentValue) => {
       let index = -1;
       prevValue.some((item, i) => {
-          if (item.group == currentValue.group1) {
+          if (item.group == currentValue[this.groupBy]) {
               index = i;
               return true;
           }
@@ -86,7 +99,7 @@ export class WordListLayoutComponent implements OnInit {
           prevValue[index].wordList.push(currentValue)
       } else {
           prevValue.push({
-            group: currentValue.group1,
+            group: currentValue[this.groupBy],
             wordList: [currentValue]
           })
       }

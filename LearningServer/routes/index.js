@@ -5,15 +5,16 @@ var router = express.Router();
 
 /* Insert words. */
 router.use('/test/insertWords', function(req, res, next) {
-  let sql  ="INSERT INTO sentences (romaji,hiragana,chinese,group1,numberOfError) VALUES ?";
+  let sql  ="INSERT INTO sentences (romaji,hiragana,chinese,groupName,numberOfError,sentencesFlag) VALUES ?";
   let sqlParams = []
   req.body.forEach(item => {
     sqlParams.push([
       item.romaji,
       item.hiragana,
       item.chinese,
-      item.group1,
-      item.errorTimes
+      item.group,
+      item.errorTimes,
+      0
     ]);
   });
 
@@ -64,6 +65,47 @@ router.use('/test/insertSentences', function(req, res, next) {
   })
 });
 
+/* Query Words. */
+router.use('/test/queryWords', function(req, res, next) {
+  let sql  ="SELECT * from sentences where sentences.groupName is not NULL";
+
+  query(sql, null, function (err,result) {
+    if(err){
+      res.json({
+        ok:false,
+        message:'Create failed！'
+      })
+    }else{
+      res.json({
+        ok:true,
+        result:result,
+        message:'Query successfully!'
+      })
+    }
+    res.end();
+  })
+});
+
+/* Query Sentences. */
+router.use('/test/querySentences', function(req, res, next) {
+  let sql  ="SELECT * from sentences where sentences.sentencesFlag = 1";
+
+  query(sql, null, function (err,result) {
+    if(err){
+      res.json({
+        ok:false,
+        message:'Create failed！'
+      })
+    }else{
+      res.json({
+        ok:true,
+        result:result,
+        message:'Query successfully!'
+      })
+    }
+    res.end();
+  })
+});
 
 // app.post('/', function (req, res) {
 //   res.send('Got a POST request')

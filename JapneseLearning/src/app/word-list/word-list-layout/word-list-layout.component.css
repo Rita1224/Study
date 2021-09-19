@@ -1,3 +1,9 @@
+.group-list {
+  float: left;
+  position: relative;
+  width: 10%;
+}
+
 .question-list {
   float: left;
   position: relative;

@@ -16,7 +16,7 @@ export class WordFormatComponent implements OnInit {
     
   }
   onInsert(){
-    this.japneseService.insertSentence().subscribe(res => {
+    this.japneseService.insertWords().subscribe(res => {
       console.log(res);
     })
   }
@@ -35,7 +35,7 @@ export class WordFormatComponent implements OnInit {
     res.hiragana = tst[0];
     let tsts = tst[1].split("）");
     res.chinese = tsts[0];
-    res.group1="な行";
+    res.group1="は行";
     return JSON.stringify(res);
   }
 

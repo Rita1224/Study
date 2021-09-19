@@ -1,6 +1,5 @@
 var createError = require('http-errors');
 var express = require('express');
-var mysql = require('mysql');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -10,39 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-app.use(cors())
-
-var connection = mysql.createConnection({
-    host:'127.0.0.1',
-    port:'3306',
-    user:'root',
-    password:'Initial1',
-    database:'japanese'
-});
-
-
-connection.connect();
-var sql = 'SELECT * FROM sentences';
-connection.query(sql, function (err,result) {
-  if(err){
-      console.log('[SELECT ERROR]:',err.message);
-  }
-  console.log(result); 
-});
-
-
-// const query=function(sql,sqlParams,callback){
-//   connection.getConnection(function(err,conn){
-//     if(err){
-//       callback(err,null,null);
-//     }else{
-//       conn.query(sql,sqlParams,function(qerr,vals,fields){
-//         conn.release();
-//         callback(qerr,vals,fields);
-//       });
-//     }
-//   });
-// };
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -5,6 +5,7 @@ import {FormControl} from '@angular/forms';
 import {TooltipPosition} from '@angular/material/tooltip';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { Japnese } from 'src/app/models/japnese';
 
 @Component({
   selector: 'app-sentences-list',
@@ -15,7 +16,7 @@ export class SentencesListComponent implements OnInit {
   //dataSource: JapaneseSentences[] = [];
   displayedColumns: string[] = ['chinese','romaji', 'hiragana', 'errorTimes'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  dataSource!: MatTableDataSource<JapaneseSentences>;
+  dataSource!: MatTableDataSource<Japnese>;
 
   constructor(private japneseService: JapneseService) { 
   }
@@ -28,14 +29,15 @@ export class SentencesListComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    //this.dataSource.paginator = this.paginator;
   }
 
   japaneseWordList():void{
-    this.japneseService.getSentence()
-      .subscribe(sentences => {
+    this.japneseService.querySentences()
+      .subscribe(res => {
+        var sentences = res.result;
         this.dataSource = new MatTableDataSource(sentences);
-        //this.dataSource.paginator = this.paginator;
+        this.dataSource.paginator = this.paginator;
       });
   }
   

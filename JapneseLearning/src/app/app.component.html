@@ -1,7 +1,10 @@
 <h1>{{title}}</h1>
 <mat-tab-group mat-align-tabs="start">
   <mat-tab label="Words Bank">
-    <app-word-list-layout></app-word-list-layout>
+    <app-word-list-layout [groupBy]="groupByTypes.HANG"></app-word-list-layout>
+  </mat-tab>
+  <mat-tab label="Words Bank by Learning Days">
+    <app-word-list-layout [groupBy]="groupByTypes.DATE"></app-word-list-layout>
   </mat-tab>
   <mat-tab label="Error List">
     <app-error-list></app-error-list>

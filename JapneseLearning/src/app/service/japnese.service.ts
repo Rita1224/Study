@@ -41,4 +41,12 @@ export class JapneseService {
     return this.http.post<any>("http://localhost:3000/test/insertSentences",
     SENTENCES);
   }
+
+  queryWords(): Observable<any>{
+    return this.http.get<any>("http://localhost:3000/test/queryWords");
+  }
+
+  querySentences(): Observable<any>{
+    return this.http.get<any>("http://localhost:3000/test/querySentences");
+  }
 }

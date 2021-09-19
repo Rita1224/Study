@@ -1,24 +1,22 @@
 <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened>
-        <mat-selection-list [multiple]="false" (selectionChange)="typeSelectedChange($event)">
+    <mat-drawer mode="side" [opened]=false>
+        <!-- <mat-selection-list [multiple]="false" (selectionChange)="typeSelectedChange($event)">
+            <mat-list-option *ngFor="let test of japaneseWord" [value]="test">
+                {{test.group}}
+            </mat-list-option>
+        </mat-selection-list> -->
+    </mat-drawer>
+    <mat-drawer-content>
+        <mat-selection-list class="group-list" [multiple]="false" (selectionChange)="typeSelectedChange($event)">
             <mat-list-option *ngFor="let test of japaneseWord" [value]="test">
                 {{test.group}}
             </mat-list-option>
         </mat-selection-list>
-    </mat-drawer>
-    <mat-drawer-content>
-       
         <mat-list role="list"  class="question-list">
             <mat-list-item class="question-list-item" role="listitem" *ngFor="let word of questionList; let i = index">
                 {{i}}: {{word}}
             </mat-list-item>
         </mat-list>
-        <!-- <mat-list role="list"  class="question-list">
-            <mat-list-item class="question-list-item" role="listitem" *ngFor="let word of questionList">
-                <textarea matInput ></textarea>
-                <button mat-raised-button *ngIf="isDisplayButtonVisible()" color="primary" (click)="onCheck()">check</button>
-            </mat-list-item>
-        </mat-list> -->
         <div class="display-container" >
             <button mat-raised-button *ngIf="isDisplayButtonVisible()" color="primary" class="switch-button" id="switch" (click)="onSwitchQuestionResult()">switch</button>
             <button mat-raised-button *ngIf="isDisplayButtonVisible()" color="primary" class="reset-button" id="reset" (click)="onReset()">reset</button>

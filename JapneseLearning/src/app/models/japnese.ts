@@ -1,7 +1,10 @@
 export interface Japnese {
     romaji: string;
+    romajiResult?: string;
     hiragana: string;
+    hiraganaresult?: string;
     chinese: string;
-    group1: string;
+    group: string;
     errorTimes?: number;
+    display?: boolean;
   }
