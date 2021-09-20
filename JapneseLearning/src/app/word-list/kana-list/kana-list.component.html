@@ -1,0 +1,30 @@
+<mat-grid-list cols="5" rowHeight="3:1">
+    <mat-grid-tile *ngFor="let Kana of kanaList; let i = index">
+        <div class="tileRomaji">
+            {{Kana.romaji}}
+        </div>
+        <div class="tileHiragana">
+            {{Kana.hiragana}}
+        </div>
+        <div class="tileKatakana">
+            {{Kana.katakana}}
+        </div>
+        <button mat-icon-button     
+            color="{{Kana.needRepeat?'': 'accent'}}" 
+            aria-label="Example icon-button with a heart icon"
+            (click)="onMarkNeedRepeat(Kana)">
+            <mat-icon>favorite</mat-icon>
+        </button>
+        <!-- <mat-card class="example-card">
+            <mat-card-header>
+            <mat-card-title>{{Kana.romaji}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                {{Kana.hiragana}}{{Kana.katakana}}
+            </mat-card-content>
+            <mat-card-actions>
+            <button mat-button>LIKE</button>
+            </mat-card-actions>
+            </mat-card> -->
+    </mat-grid-tile>
+</mat-grid-list>

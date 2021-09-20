@@ -4,7 +4,7 @@ export interface Japnese {
     hiragana: string;
     hiraganaresult?: string;
     chinese: string;
-    group: string;
+    groupName: string;
     errorTimes?: number;
     display?: boolean;
   }

@@ -15,8 +15,15 @@ export class WordFormatComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
   onInsert(){
     this.japneseService.insertWords().subscribe(res => {
+      console.log(res);
+    })
+  }
+
+  onInsertSentences(){
+    this.japneseService.insertSentences().subscribe(res => {
       console.log(res);
     })
   }
@@ -26,7 +33,7 @@ export class WordFormatComponent implements OnInit {
       romaji: "",
       hiragana: "",
       chinese: "",
-      group1: ""
+      groupName: ""
     };
     let t = str.split(" ");
     let ts = t.filter(i=>i && i.trim())
@@ -35,7 +42,7 @@ export class WordFormatComponent implements OnInit {
     res.hiragana = tst[0];
     let tsts = tst[1].split("）");
     res.chinese = tsts[0];
-    res.group1="は行";
+    res.groupName="は行";
     return JSON.stringify(res);
   }
 
@@ -52,6 +59,7 @@ export class WordFormatComponent implements OnInit {
     return JSON.stringify(res);
   }
 
+  /* input string format should be はな;花;花, */
   onJapaneseSentencesFormat(){
     this.result = "";
     var words = this.test.split(",\n");
@@ -60,6 +68,7 @@ export class WordFormatComponent implements OnInit {
     });
   }
 
+  /* はこ 箱（箱子）,*/
   onformat(){
     this.result = "";
     var words = this.test.split(",\n");

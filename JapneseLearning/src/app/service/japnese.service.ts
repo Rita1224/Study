@@ -28,10 +28,6 @@ export class JapneseService {
     return sentences;
   }
 
-  getHeroes(): Observable<string> {
-    return this.http.get<string>("http://localhost:3000/test", {});
-  }
-
   insertWords(): Observable<any> {
     return this.http.post<any>("http://localhost:3000/test/insertWords",
     WORDS);
@@ -49,4 +45,15 @@ export class JapneseService {
   querySentences(): Observable<any>{
     return this.http.get<any>("http://localhost:3000/test/querySentences");
   }
+
+  queryKana(): Observable<any>{
+    return this.http.get<any>("http://localhost:3000/test/queryKana");
+  }
+  
+  updateKanaRepeatStatus(kana: any): Observable<any>{
+    return this.http.post<any>("http://localhost:3000/test/updateKanaRepeatStatus",
+    kana);
+  }
+
+  
 }

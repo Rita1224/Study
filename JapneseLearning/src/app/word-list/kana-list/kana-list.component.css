@@ -1,0 +1,15 @@
+mat-grid-tile {
+  background: lightblue;
+}
+
+.tileRomaji,
+.tileHiragana,
+.tileKatakana {
+  height: 30px;
+  width: 45px;
+  font-size: xx-large;
+}
+
+mat-grid-list {
+  padding: 20px;
+}

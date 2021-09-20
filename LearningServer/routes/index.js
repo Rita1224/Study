@@ -67,7 +67,7 @@ router.use('/test/insertSentences', function(req, res, next) {
 
 /* Query Words. */
 router.use('/test/queryWords', function(req, res, next) {
-  let sql  ="SELECT * from sentences where sentences.groupName is not NULL";
+  let sql  ="SELECT * from sentences";
 
   query(sql, null, function (err,result) {
     if(err){
@@ -101,6 +101,50 @@ router.use('/test/querySentences', function(req, res, next) {
         ok:true,
         result:result,
         message:'Query successfully!'
+      })
+    }
+    res.end();
+  })
+});
+
+/* Query 仮名. */
+router.use('/test/queryKana', function(req, res, next) {
+  let sql  ="SELECT * from kana";
+
+  query(sql, null, function (err,result) {
+    if(err){
+      res.json({
+        ok:false,
+        message:'Create failed！'
+      })
+    }else{
+      res.json({
+        ok:true,
+        result:result,
+        message:'Query successfully!'
+      })
+    }
+    res.end();
+  })
+});
+
+/*Update Kana need repeat status */
+router.use('/test/updateKanaRepeatStatus', function(req, res, next) {
+  let sql  ="Update kana set kana.needRepeat = ? where id= ?";
+
+  let sqlParams = [req.body.needRepeat, req.body.id]
+
+  query(sql, sqlParams, function (err,result) {
+    if(err){
+      res.json({
+        ok:false,
+        message:'Update Kana Repeat Status failed！'
+      })
+    }else{
+      res.json({
+        ok:true,
+        result:result,
+        message:'Update Kana Repeat Status  successfully!'
       })
     }
     res.end();

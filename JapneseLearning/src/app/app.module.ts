@@ -19,6 +19,11 @@ import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { WordMaintenanceComponent } from './word-list/word-maintenance/word-maintenance.component';
+import { KanaListComponent } from './word-list/kana-list/kana-list.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +31,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     WordListLayoutComponent,
     WordFormatComponent,
     ErrorListComponent,
-    SentencesListComponent
+    SentencesListComponent,
+    WordMaintenanceComponent,
+    KanaListComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatTableModule,
     MatIconModule,
     MatTooltipModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatGridListModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
